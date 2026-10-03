@@ -1,6 +1,6 @@
 # Task Manager & Note Files Web App
 
-A clean, responsive, dark-mode frontend web application built to match and elevate the localhost task manager interface.
+A clean, responsive, dark-mode full-stack web application built to match and elevate the localhost task manager interface.
 
 ## ✨ Features
 
@@ -11,17 +11,17 @@ A clean, responsive, dark-mode frontend web application built to match and eleva
   - **Quick Actions**: Copy content to clipboard, edit filename and details, download directly as a `.txt` file, or delete tasks.
 - **Search & Filter**: Real-time instant search across file names and details.
 - **Sorting Options**: Default (screenshot arrangement), Newest First, or Alphabetical (A-Z).
-- **Persistent Storage**: Changes are automatically saved in browser `localStorage`.
-- **Reset to Demo Tasks**: Easily restore the original tasks (`.txt`, `adsf.txt`, `backendoeftxfhh.txt`, `chacha.md.txt`, `dbfiles.txt`, `helo.js.txt`, `kushal.txt`, `nilotpalfrontend.txt`).
+- **Persistent Storage**: Tasks are saved as real `.txt` files in a `tasks/` folder on the server using Node's `fs` module.
+- **Reset to Demo Tasks**: Easily restore the original tasks (`.txt`, `test1.txt`, `something.txt`).
 
 ## 🚀 How to Run
 
-1. Open `index.html` directly in your browser:
-   ```bash
-   file:///c:/Users/satya/OneDrive/Documents/projects/task-manager/index.html
-   ```
-2. Or run via local server on port 9000 (currently active):
-   ```bash
-   python -m http.server 9000
-   ```
-   and navigate to: [http://localhost:9000](http://localhost:9000)
+1. Install dependencies: `npm install`
+2. Start the server: `npm start`
+3. Open http://localhost:3000 in your browser
+
+## 🛠️ Backend Routes (Express + fs)
+
+- `POST /tasks` reads `title` and `description` from `req.body` and saves them as a `.txt` file with `fs.writeFile`
+- `GET /tasks` lists all saved tasks with `fs.readdir`
+- `GET /tasks/:name` reads one full task with `fs.readFile` using `req.params.name`
